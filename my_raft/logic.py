@@ -16,6 +16,6 @@ class AppendEntries(RPC):
 
 class RequestVote(RPC):
     def send():
-        pass
+        pass    
     def receive():
         pass
