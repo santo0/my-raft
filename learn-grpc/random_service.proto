@@ -1,0 +1,22 @@
+syntax = "proto3";
+// The random number service definition.
+service RandomNumberService {
+  // Generates a random number
+  rpc GenerateRandomNumber (RandomNumberRequest) returns (RandomNumberResponse) {}
+}
+
+message RandomNumberRequest {
+  int32 min = 1;   // Lower bound for the random number generation
+  int32 max = 2;   // Upper bound for the random number generation
+  optional int32 seed = 3;  // Optional seed for random number generation
+  optional int32 count = 4;  // Number of random numbers to generate
+  optional bool unique = 5; // If true, all generated numbers will be unique
+  optional bool output_duration = 6; // If true, the response will include the duration of the generation process 
+  // If count is not specified, a single random number will be generated.
+}
+
+message RandomNumberResponse {
+  repeated int32 numbers = 1; // List of generated random numbers
+  optional string output_duration = 2;         // Optional message about the generation
+  int32 seed_used = 3;        // The seed used for generation
+}
